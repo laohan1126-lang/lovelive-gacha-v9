@@ -1,0 +1,67 @@
+# 音频文件名清单
+
+请把你拥有使用权的代表曲音频放在本目录，格式统一为 `.mp3`。缺文件时页面会显示提示，不会报错。
+
+- `muse-honoka.mp3`：高坂穗乃果 / START:DASH!!
+- `muse-eli.mp3`：绚濑绘里 / Arifureta Kanashimi no Hate
+- `muse-kotori.mp3`：南琴梨 / Blueberry♡Train
+- `muse-umi.mp3`：园田海未 / Yūki no Reason
+- `muse-rin.mp3`：星空凛 / Koi no Signal Rin rin rin!
+- `muse-maki.mp3`：西木野真姬 / Daring!!
+- `muse-nozomi.mp3`：东条希 / Junai Lens
+- `muse-hanayo.mp3`：小泉花阳 / Kodoku na Heaven
+- `muse-nico.mp3`：矢泽妮可 / Mahoutsukai Hajimemashita!
+- `aqours-chika.mp3`：高海千歌 / One More Sunshine Story
+- `aqours-riko.mp3`：樱内梨子 / Pianoforte Monologue
+- `aqours-kanan.mp3`：松浦果南 / Sakana ka Nanda ka?
+- `aqours-dia.mp3`：黑泽黛雅 / WHITE FIRST LOVE
+- `aqours-you.mp3`：渡边曜 / Beginner's Sailing
+- `aqours-yoshiko.mp3`：津岛善子 / in this unstable world
+- `aqours-hanamaru.mp3`：国木田花丸 / Oyasuminasan!
+- `aqours-mari.mp3`：小原鞠莉 / New winding road
+- `aqours-ruby.mp3`：黑泽露比 / RED GEM WINK
+- `niji-yu.mp3`：高咲侑 / Yume ga Koko kara Hajimaru yo
+- `niji-ayumu.mp3`：上原步梦 / Yume e no Ippo
+- `niji-kasumi.mp3`：中须霞 / ☆Wonderland☆
+- `niji-shizuku.mp3`：樱坂雫 / Anata no Risou no Heroine
+- `niji-karin.mp3`：朝香果林 / Starlight
+- `niji-ai.mp3`：宫下爱 / Meccha Going!!
+- `niji-kanata.mp3`：近江彼方 / Nemureru Mori ni Ikitai na
+- `niji-setsuna.mp3`：优木雪菜 / CHASE!
+- `niji-emma.mp3`：艾玛·维尔德 / Evergreen
+- `niji-rina.mp3`：天王寺璃奈 / Doki Pipo☆Emotion
+- `niji-shioriko.mp3`：三船栞子 / Ketsui no Hikari
+- `niji-mia.mp3`：米娅·泰勒 / I'm Still...
+- `niji-lanzhu.mp3`：钟岚珠 / Queendom
+- `liella-kanon.mp3`：涩谷香音 / Mirai Yohou Hallelujah!
+- `liella-keke.mp3`：唐可可 / Tiny Stars
+- `liella-chisato.mp3`：岚千砂都 / Dancing Heart La-Pa-Pa-Pa!
+- `liella-sumire.mp3`：平安名堇 / Nonfiction!!
+- `liella-ren.mp3`：叶月恋 / Primary
+- `liella-kinako.mp3`：樱小路希奈子 / Go!! Restart
+- `liella-mei.mp3`：米女芽衣 / Akane Gokoro
+- `liella-shiki.mp3`：若菜四季 / Glass Ball Rejection
+- `liella-natsumi.mp3`：鬼塚夏美 / Vitamin SUMMER!
+- `liella-wien.mp3`：薇恩·玛格丽特 / Butterfly Wing
+- `liella-tomari.mp3`：鬼塚冬毬 / Including you
+- `hasu-kaho.mp3`：日野下花帆 / Dream Believers
+- `hasu-sayaka.mp3`：村野沙耶香 / AWOKE
+- `hasu-kozue.mp3`：乙宗梢 / Suisai Sekai
+- `hasu-tsuzuri.mp3`：夕雾缀理 / Mirage Voyage
+- `hasu-rurino.mp3`：大泽瑠璃乃 / Do! Fortune Movie!
+- `hasu-megumi.mp3`：藤岛慈 / Kawaii no Susume
+- `hasu-ginko.mp3`：百生吟子 / Bloom the smile, Bloom the dream!
+- `hasu-kosuzu.mp3`：徒町小铃 / Proof
+- `hasu-hime.mp3`：安养寺姬芽 / Dakishimeru Hanabira
+- `hasu-ceras.mp3`：赛拉斯·柳田·莉莉恩菲尔特 / EdelinieN
+- `hasu-izumi.mp3`：桂城泉 / EdelinieN
+- `bluebird-polka.mp3`：高桥波尔卡 / What is my LIFE?
+- `bluebird-mai.mp3`：麻布麻衣 / What is my LIFE?
+- `bluebird-akira.mp3`：五桐玲 / What is my LIFE?
+- `bluebird-hanabi.mp3`：駒形花火 / What is my LIFE?
+- `bluebird-miracle.mp3`：金泽奇迹 / What is my LIFE?
+- `bluebird-noriko.mp3`：调布典子 / What is my LIFE?
+- `bluebird-yukuri.mp3`：春宫ゆくり / What is my LIFE?
+- `bluebird-aurora.mp3`：此花辉夜 / What is my LIFE?
+- `bluebird-midori.mp3`：山田真绿 / What is my LIFE?
+- `bluebird-shion.mp3`：佐佐木翔音 / What is my LIFE?

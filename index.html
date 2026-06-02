@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>LoveLive! 今日恋みくじ</title>
+  <meta name="description" content="LoveLive! 全员恋みくじ：输入 CN，摇出今天与你结缘的学园偶像。" />
+  <link rel="stylesheet" href="styles_v9.css?v=13" />
+</head>
+<body>
+  <div class="bg-orbs" aria-hidden="true"><span></span><span></span><span></span></div>
+  <main id="app">
+    <section id="home" class="page page-home is-active">
+      <header class="hero">
+        <div class="eyebrow">LoveLive! Cheer Color Omikuji</div>
+        <h1>LoveLive! 今日恋みくじ</h1>
+        <p class="hero-subtitle">输入你的 CN，轻轻摇一摇，抽出今天与你结缘的那一位学园偶像。</p>
+      </header>
+
+      <section class="cover-machine" aria-label="封面与抽签机">
+        <div class="cover-grid" id="coverGrid"></div>
+        <div class="cover-audio-bubble" id="coverAudioBubble">
+          <span id="coverAudioStatus">点团封面可播放对应团歌</span>
+          <button id="coverAudioToggle" class="cover-audio-toggle" type="button" hidden>暂停团歌</button>
+        </div>
+        <div class="machine-core">
+          <div class="glass-dome" aria-hidden="true">
+            <div class="capsule c1"></div>
+            <div class="capsule c2"></div>
+            <div class="capsule c3"></div>
+            <div class="capsule c4"></div>
+            <div class="shine"></div>
+          </div>
+          <div class="machine-body">
+            <div class="ticker">今日签筒 · 已装填</div>
+            <div class="omikuji-strip" aria-hidden="true">
+              <span>大吉</span><span>中吉</span><span>小吉</span><span>吉</span><span>末吉</span><span>恋吉</span><span>花吉</span><span>星吉</span>
+            </div>
+            <label class="cn-label" for="cnInput">你的 CN / 昵称</label>
+            <input id="cnInput" class="cn-input" maxlength="24" placeholder="例如：虎子" autocomplete="nickname" />
+            <button id="drawBtn" class="draw-btn" type="button">拉拉人不灭！</button>
+            <p class="machine-copy">愿你今天抽到正好能照亮你的那一位。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="catalog-panel">
+        <div class="section-title-row">
+          <h2>全员图鉴</h2>
+          <span>按企划分组展示团图与角色，点击任意角色可直接查看签面。</span>
+        </div>
+        <div id="catalogGroups" class="catalog-groups"></div>
+      </section>
+    </section>
+
+    <section id="result" class="page page-result" aria-live="polite">
+      <button id="backBtn" class="ghost-btn" type="button">← 返回签筒</button>
+      <article id="resultCard" class="result-card">
+        <div class="paper-header">
+          <p class="paper-title">ラブライブ！御縁みくじ</p>
+          <p class="paper-sub">诚心祈愿 · 今日结缘</p>
+        </div>
+
+        <div class="paper-core">
+          <div class="paper-left">
+            <div class="core-sign">
+              <div id="resultSlipNo" class="sign-no">第 01 签</div>
+              <div class="sign-luck">大吉</div>
+            </div>
+            <section class="poem-section">
+              <div class="poem-label">签诗</div>
+              <div id="resultPoem" class="poem-columns"></div>
+            </section>
+          </div>
+
+          <div class="paper-right">
+            <div class="core-character">
+              <div id="resultAvatar" class="avatar big-avatar"></div>
+              <div class="core-text">
+                <p id="resultSeries" class="result-series"></p>
+                <h2 id="resultName"></h2>
+                <p id="resultJp" class="jp-name"></p>
+              </div>
+            </div>
+
+            <div class="fortune-line" id="fortuneLine"></div>
+
+            <section class="text-block oracle-block">
+              <h3>断曰</h3>
+              <p id="resultOracle"></p>
+            </section>
+
+            <section class="omikuji-meta paper-grid-2">
+              <div class="omikuji-item"><span>愿望</span><strong id="resultWish"></strong></div>
+              <div class="omikuji-item"><span>待人</span><strong id="resultPeople"></strong></div>
+              <div class="omikuji-item"><span>出行</span><strong id="resultTravel"></strong></div>
+              <div class="omikuji-item"><span>学业</span><strong id="resultStudy"></strong></div>
+            </section>
+          </div>
+        </div>
+
+        <div class="info-grid">
+          <div class="info-item"><span>CV</span><strong id="resultCv"></strong></div>
+          <div class="info-item"><span>属性概括</span><strong id="resultTraits"></strong></div>
+        </div>
+
+        <section class="representative-box" id="representativeBox" hidden>
+          <div class="representative-copy">
+            <span>代表曲</span>
+            <strong id="representativeTitle"></strong>
+            <p id="representativeMeta"></p>
+          </div>
+          <div class="representative-actions">
+            <button id="representativePlayBtn" class="representative-play" type="button">播放</button>
+            <a id="representativeVideoLink" class="representative-link" target="_blank" rel="noreferrer" hidden>相关视频</a>
+            <small id="representativeStatus"></small>
+          </div>
+          <audio id="representativeAudio" preload="none"></audio>
+        </section>
+
+        <section class="text-block lucky-block">
+          <h3>解签</h3>
+          <p id="resultLucky"></p>
+        </section>
+        <section class="text-block">
+          <h3>缘起</h3>
+          <p id="resultIntro"></p>
+        </section>
+        <section class="text-block tip-block">
+          <h3>小 Tip</h3>
+          <p id="resultTip"></p>
+        </section>
+
+        <div class="result-actions">
+          <button id="againBtn" class="draw-btn small" type="button">再摇一次</button>
+          <button id="copyBtn" class="ghost-btn dark" type="button">复制今日签文</button>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <template id="coverTileTemplate">
+    <div class="cover-tile">
+      <img alt="" />
+      <div class="cover-fallback">
+        <strong></strong>
+        <span></span>
+      </div>
+    </div>
+  </template>
+
+  <template id="miniCardTemplate">
+    <button class="mini-card" type="button">
+      <div class="avatar mini-avatar"></div>
+      <div>
+        <strong></strong>
+        <span></span>
+      </div>
+    </button>
+  </template>
+
+  <script src="data/characters.js?v=13"></script>
+  <script src="script_v9.js?v=13"></script>
+</body>
+</html>
