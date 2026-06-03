@@ -18,6 +18,7 @@ const copyBtn = $("copyBtn");
 const resultCard = $("resultCard");
 const coverAudioStatus = $("coverAudioStatus");
 const coverAudioToggle = $("coverAudioToggle");
+const coverAudioEl = $("coverAudio");
 const representativeBox = $("representativeBox");
 const representativeTitle = $("representativeTitle");
 const representativeMeta = $("representativeMeta");
@@ -25,7 +26,7 @@ const representativePlayBtn = $("representativePlayBtn");
 const representativeVideoLink = $("representativeVideoLink");
 const representativeStatus = $("representativeStatus");
 const representativeAudio = $("representativeAudio");
-const coverAudio = new Audio();
+const coverAudio = coverAudioEl || new Audio();
 coverAudio.preload = "none";
 
 let currentCoverSeries = null;
@@ -150,7 +151,8 @@ async function playSeriesAudio(item, tile) {
   if (!item?.coverAudio) return;
   stopRepresentativeAudio(false);
 
-  const sameTrack = currentCoverSeries === item.key && coverAudio.src.includes(item.coverAudio);
+  const hasLoadedTrack = coverAudio.src.includes(item.coverAudio);
+  const sameTrack = currentCoverSeries === item.key && hasLoadedTrack;
 
   if (sameTrack && !coverAudio.paused) {
     coverAudio.pause();
@@ -163,7 +165,7 @@ async function playSeriesAudio(item, tile) {
   document.querySelectorAll(".cover-tile.is-playing").forEach((el) => el.classList.remove("is-playing"));
   currentCoverSeries = item.key;
 
-  if (!sameTrack) {
+  if (!hasLoadedTrack) {
     coverAudio.src = item.coverAudio;
     coverAudio.load();
   }
@@ -171,12 +173,16 @@ async function playSeriesAudio(item, tile) {
   try {
     await coverAudio.play();
     tile.classList.add("is-playing");
+    tile.classList.remove("is-audio-error");
     if (coverAudioToggle) {
       coverAudioToggle.hidden = false;
       coverAudioToggle.textContent = "暂停团歌";
     }
     if (coverAudioStatus) coverAudioStatus.textContent = `正在播放：${item.label}《${item.coverSong || "团歌"}》`;
   } catch (error) {
+    tile.classList.add("is-audio-error");
+    tile.title = "团歌播放失败，请再点一次或检查浏览器音频权限";
+    console.warn("团歌播放失败", error);
     if (coverAudioToggle) coverAudioToggle.hidden = true;
     if (coverAudioStatus) coverAudioStatus.textContent = "团歌播放失败。若直接用 file:// 打开，请改用本地服务器打开页面。";
   }
@@ -190,6 +196,20 @@ function renderCoverGrid() {
   const grid = $("coverGrid");
   const tpl = $("coverTileTemplate");
   grid.innerHTML = "";
+  grid.onpointerdown = (event) => {
+    const tile = event.target.closest(".cover-tile");
+    if (!tile || !grid.contains(tile)) return;
+    const item = series.find((s) => s.key === tile.dataset.seriesKey);
+    if (!item?.coverAudio || coverAudio.src.includes(item.coverAudio)) return;
+    coverAudio.src = item.coverAudio;
+    coverAudio.load();
+  };
+  grid.onpointerup = (event) => {
+    const tile = event.target.closest(".cover-tile");
+    if (!tile || !grid.contains(tile)) return;
+    const item = series.find((s) => s.key === tile.dataset.seriesKey);
+    if (item) playSeriesAudio(item, tile);
+  };
 
   series.forEach((item) => {
     const tile = tpl.content.firstElementChild.cloneNode(true);
@@ -221,7 +241,6 @@ function renderCoverGrid() {
       }
       img.remove();
     };
-    tile.addEventListener("click", () => playSeriesAudio(item, tile));
     grid.appendChild(tile);
   });
 }
