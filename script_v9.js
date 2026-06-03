@@ -147,15 +147,15 @@ async function toggleRepresentativeAudio() {
 }
 
 async function playSeriesAudio(item, tile) {
-  if (!item?.coverAudio || !coverAudioStatus || !coverAudioToggle) return;
+  if (!item?.coverAudio) return;
   stopRepresentativeAudio(false);
 
   const sameTrack = currentCoverSeries === item.key && coverAudio.src.includes(item.coverAudio);
 
   if (sameTrack && !coverAudio.paused) {
     coverAudio.pause();
-    coverAudioToggle.textContent = "继续团歌";
-    coverAudioStatus.textContent = `已暂停：${item.label}《${item.coverSong || "团歌"}》`;
+    if (coverAudioToggle) coverAudioToggle.textContent = "继续团歌";
+    if (coverAudioStatus) coverAudioStatus.textContent = `已暂停：${item.label}《${item.coverSong || "团歌"}》`;
     tile.classList.remove("is-playing");
     return;
   }
@@ -171,12 +171,14 @@ async function playSeriesAudio(item, tile) {
   try {
     await coverAudio.play();
     tile.classList.add("is-playing");
-    coverAudioToggle.hidden = false;
-    coverAudioToggle.textContent = "暂停团歌";
-    coverAudioStatus.textContent = `正在播放：${item.label}《${item.coverSong || "团歌"}》`;
+    if (coverAudioToggle) {
+      coverAudioToggle.hidden = false;
+      coverAudioToggle.textContent = "暂停团歌";
+    }
+    if (coverAudioStatus) coverAudioStatus.textContent = `正在播放：${item.label}《${item.coverSong || "团歌"}》`;
   } catch (error) {
-    coverAudioToggle.hidden = true;
-    coverAudioStatus.textContent = "团歌播放失败。若直接用 file:// 打开，请改用本地服务器打开页面。";
+    if (coverAudioToggle) coverAudioToggle.hidden = true;
+    if (coverAudioStatus) coverAudioStatus.textContent = "团歌播放失败。若直接用 file:// 打开，请改用本地服务器打开页面。";
   }
 }
 
