@@ -978,3 +978,198 @@ h1 {
 .cover-tile.cover-key-liella img { object-position: center center !important; }
 .cover-tile.cover-key-hasunosora img { object-position: center 45% !important; }
 .cover-tile.cover-key-bluebird img { object-position: center center !important; }
+
+/* ===== v12 mobile compaction + collapsible series catalog ===== */
+.section-title-row {
+  align-items: start;
+}
+.section-title-copy {
+  min-width: 0;
+}
+.group-toggle {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: #4a3440;
+  font-weight: 1000;
+  background: rgba(255,255,255,.82);
+  box-shadow: var(--shadow-soft);
+}
+.catalog-group-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.catalog[hidden] {
+  display: none !important;
+}
+.group-toggle {
+  padding: 7px 11px;
+  font-size: 12px;
+}
+.group-toggle[aria-expanded="true"] {
+  background: linear-gradient(90deg, rgba(255,175,210,.95), rgba(160,225,255,.95));
+}
+
+@media (min-width: 700px) {
+  .section-title-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+  }
+}
+
+@media (max-width: 699px) {
+  #app {
+    width: min(100% - 18px, 1180px);
+    padding-top: 10px;
+  }
+  .hero {
+    padding: 10px 6px 8px;
+  }
+  .eyebrow {
+    font-size: 10px;
+    padding: 6px 10px;
+  }
+  h1 {
+    margin: 10px 0 6px;
+    font-size: clamp(26px, 9vw, 34px);
+    letter-spacing: 0;
+  }
+  .hero-subtitle {
+    font-size: 13px;
+    line-height: 1.55;
+  }
+  .cover-machine {
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .cover-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 7px !important;
+    overflow: visible;
+    margin-inline: 0;
+    padding: 0;
+  }
+  .cover-tile,
+  .cover-tile.cover-key-muse,
+  .cover-tile.cover-key-aqours,
+  .cover-tile.cover-key-nijigasaki,
+  .cover-tile.cover-key-liella,
+  .cover-tile.cover-key-hasunosora,
+  .cover-tile.cover-key-bluebird {
+    width: 100%;
+    aspect-ratio: 16 / 10 !important;
+    border-radius: 12px !important;
+  }
+  .cover-tile.cover-key-liella img,
+  .cover-tile.cover-key-hasunosora img,
+  .cover-tile.cover-key-bluebird img {
+    object-fit: contain !important;
+    object-position: center center !important;
+    background:
+      linear-gradient(135deg, rgba(255,255,255,.36), rgba(255,255,255,.58)),
+      var(--cover-image);
+    background-size: cover;
+    background-position: center;
+  }
+  .cover-audio-bubble {
+    width: 100%;
+    justify-self: stretch;
+    padding: 7px 10px;
+  }
+  #coverAudioStatus {
+    white-space: normal;
+    text-align: center;
+  }
+  .machine-core {
+    border-radius: 20px;
+    padding: 9px;
+  }
+  .machine-body {
+    margin-top: 0;
+    padding: 12px;
+    border-radius: 18px;
+  }
+  .ticker {
+    padding: 8px 10px;
+    margin-bottom: 10px;
+  }
+  .omikuji-strip {
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+  .omikuji-strip span {
+    min-width: 42px;
+    padding: 5px 7px;
+  }
+  .cn-input {
+    padding: 12px 13px;
+    border-radius: 14px;
+  }
+  .draw-btn {
+    margin-top: 10px;
+    padding: 13px 16px;
+    border-radius: 16px;
+  }
+  .machine-copy {
+    margin-top: 8px;
+    font-size: 12px;
+  }
+  .catalog-panel {
+    margin-top: 16px;
+  }
+  .section-title-row h2 {
+    font-size: 21px;
+  }
+  .section-title-row span {
+    display: none;
+  }
+  .catalog-groups {
+    gap: 10px;
+  }
+  .catalog-group {
+    border-radius: 20px;
+    padding: 11px;
+  }
+  .catalog-group-head {
+    align-items: center;
+    margin-bottom: 0;
+  }
+  .catalog-group:has(.catalog:not([hidden])) .catalog-group-head {
+    margin-bottom: 10px;
+  }
+  .catalog-group-title {
+    font-size: 17px;
+  }
+  .catalog-group-title small {
+    display: none;
+  }
+  .group-count {
+    padding: 6px 8px;
+  }
+  .catalog {
+    gap: 8px;
+  }
+  .mini-card {
+    min-height: 64px;
+    border-radius: 15px;
+    padding: 8px;
+  }
+  .mini-avatar {
+    width: 46px;
+    height: 46px;
+  }
+}
+
+@media (max-width: 380px) {
+  .cover-tile,
+  .cover-tile.cover-key-muse,
+  .cover-tile.cover-key-aqours,
+  .cover-tile.cover-key-nijigasaki,
+  .cover-tile.cover-key-liella,
+  .cover-tile.cover-key-hasunosora,
+  .cover-tile.cover-key-bluebird {
+    border-radius: 10px !important;
+  }
+}

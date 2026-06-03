@@ -228,6 +228,16 @@ function renderCatalogGroups() {
   const wrap = $("catalogGroups");
   const tpl = $("miniCardTemplate");
   wrap.innerHTML = "";
+  wrap.onclick = (event) => {
+    const groupToggle = event.target.closest(".group-toggle");
+    if (!groupToggle || !wrap.contains(groupToggle)) return;
+    const grid = $(groupToggle.getAttribute("aria-controls"));
+    if (!grid) return;
+    const willExpand = groupToggle.getAttribute("aria-expanded") !== "true";
+    groupToggle.setAttribute("aria-expanded", String(willExpand));
+    groupToggle.textContent = willExpand ? "收起" : "展开";
+    grid.hidden = !willExpand;
+  };
 
   series.forEach((s) => {
     const group = document.createElement("section");
@@ -243,13 +253,27 @@ function renderCatalogGroups() {
     title.className = "catalog-group-title";
     title.innerHTML = `${s.label}<small>${s.jp}</small>`;
 
+    const actions = document.createElement("div");
+    actions.className = "catalog-group-actions";
+
     const count = document.createElement("div");
     count.className = "group-count";
     count.textContent = `${members.length} 人`;
-    head.append(title, count);
+
+    const groupToggle = document.createElement("button");
+    groupToggle.className = "group-toggle";
+    groupToggle.type = "button";
+    groupToggle.textContent = "展开";
+    groupToggle.setAttribute("aria-expanded", "false");
+
+    actions.append(count, groupToggle);
+    head.append(title, actions);
 
     const grid = document.createElement("div");
     grid.className = "catalog";
+    grid.id = `catalog-${s.key}`;
+    grid.hidden = true;
+    groupToggle.setAttribute("aria-controls", grid.id);
 
     members.forEach((character) => {
       const card = tpl.content.firstElementChild.cloneNode(true);
@@ -452,6 +476,5 @@ if (coverAudioToggle) {
     }
   });
 }
-
 renderCoverGrid();
 renderCatalogGroups();
