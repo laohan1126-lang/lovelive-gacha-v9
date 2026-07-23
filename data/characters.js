@@ -695,6 +695,11 @@ const REPRESENTATIVE_TRACKS = {
     title: "Jump Into the New World",
     display: "《Jump Into the New World》(参与) / 《New World》(Solo)",
     audio: "assets/audio/representative/jump_into_new_world.mp3"
+  },
+  "hasu-rurino": {
+    title: "Kokon Tozai (104th Version)",
+    display: "《Kokon Tozai (104th Version)》(Mira-Cra Park！)",
+    audio: "assets/audio/representative/kokon_tozai_104th.mp3"
   }
 };
 
