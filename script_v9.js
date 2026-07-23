@@ -1,5 +1,11 @@
 const characters = window.LL_CHARACTERS || [];
 const series = window.LL_SERIES || [];
+const drawPool = characters.filter(({ id }) => [
+  "muse-kotori", "muse-maki", "muse-eli", "muse-nico",
+  "aqours-you", "aqours-riko", "aqours-yoshiko", "aqours-dia",
+  "niji-ayumu", "niji-setsuna", "niji-shioriko", "niji-ai", "niji-lanzhu",
+  "hasu-rurino"
+].includes(id));
 const charactersBySeries = characters.reduce((map, character) => {
   if (!map.has(character.seriesKey)) map.set(character.seriesKey, []);
   map.get(character.seriesKey).push(character);
@@ -312,12 +318,12 @@ function renderCatalogGroups() {
 }
 
 function pickRandomCharacter() {
-  if (!characters.length) return null;
-  let candidate = characters[Math.floor(Math.random() * characters.length)];
-  if (characters.length > 1) {
+  if (!drawPool.length) return null;
+  let candidate = drawPool[Math.floor(Math.random() * drawPool.length)];
+  if (drawPool.length > 1) {
     let guard = 0;
     while (candidate.id === lastDrawId && guard < 8) {
-      candidate = characters[Math.floor(Math.random() * characters.length)];
+      candidate = drawPool[Math.floor(Math.random() * drawPool.length)];
       guard += 1;
     }
   }
