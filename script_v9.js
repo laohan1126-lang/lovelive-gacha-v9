@@ -377,7 +377,7 @@ function fillResult(character) {
   currentResultCharacter = character;
   resultScreen.classList.toggle("is-reference-proof", usesCurtainLayout);
   document.body.classList.toggle("is-reference-proof", usesCurtainLayout);
-  $("resultTicket").style.setProperty("--result-gold", character.color);
+  $("resultTicket").style.setProperty("--character-accent", character.color);
   $("resultSeries").textContent = item.label;
   $("resultSlipNo").textContent = character.slipNo;
   $("resultCn").textContent = `CN ${cn}`;
@@ -385,7 +385,7 @@ function fillResult(character) {
   $("resultKeyword").textContent = character.focus;
   $("resultName").textContent = character.nameCn;
   $("resultName").style.setProperty("--result-name-size", `${Math.min(7, 42 / [...character.nameCn].length)}cqw`);
-  $("resultJp").textContent = usesCurtainLayout ? character.roman : `${character.nameJp} / ${character.roman}`;
+  $("resultJp").textContent = character.roman;
   $("returnHome").textContent = usesCurtainLayout ? "← 返回" : "← 返回首页";
   $("againBtn").textContent = usesCurtainLayout ? "再抽一次" : "再来一签";
   $("resultOracle").textContent = character.oracle;
@@ -430,6 +430,7 @@ function clearRevealStyles() {
     $("resultTicket"),
     $("resultSeries"),
     q(".result-title"),
+    q(".result-rank-block"),
     ...document.querySelectorAll(".omikuji-curtain"),
     q(".portrait-column"),
     q(".character-art-wrap"),
@@ -579,11 +580,12 @@ function buildRevealTimeline(character) {
       duration: 0.58,
       ease: "power4.out"
     }, "curtain")
-    .from(q(".result-title"), {
-      y: -22,
+    .from([q(".result-title"), q(".result-rank-block")], {
+      y: -18,
       autoAlpha: 0,
-      duration: 0.4
-    }, "curtain+=0.12")
+      duration: 0.46,
+      stagger: 0.08
+    }, "curtain+=0.1")
     .addLabel("portrait", 1.32)
     .from(q(".portrait-column"), {
       y: 52,
