@@ -372,7 +372,7 @@ function fillResult(character) {
   const art = $("resultArt");
   const poem = $("resultPoem");
   const cn = cnInput.value.trim() || "GUEST";
-  const usesCurtainLayout = true;
+  const usesCurtainLayout = false;
 
   currentResultCharacter = character;
   resultScreen.classList.toggle("is-reference-proof", usesCurtainLayout);
