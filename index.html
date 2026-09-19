@@ -8,7 +8,7 @@
   <meta name="description" content="长按票根，抽出今天与你同台的 LoveLive! 学园偶像。" />
   <link rel="icon" href="data/covers_webp/muse.webp" />
   <link rel="preload" as="image" href="data/covers_webp/muse.webp" />
-  <link rel="stylesheet" href="styles_v9.css?v=26" />
+  <link rel="stylesheet" href="styles_v9.css?v=28" />
 </head>
 <body>
   <div class="app-shell" id="appShell">
@@ -68,62 +68,63 @@
         <section class="result-screen" id="resultScreen" aria-hidden="true">
           <article class="result-ticket" id="resultTicket">
             <header class="result-heading">
-              <p><span id="resultSeries"></span><span id="resultSlipNo"></span></p>
+              <p class="result-meta">
+                <span id="resultSeries"></span>
+                <span id="resultSlipNo"></span>
+              </p>
               <div class="result-title" aria-hidden="true">
-                <strong>御<br />神<br />签</strong>
-                <span>◆<br />签幕揭晓<br />◆</span>
+                <strong>御神签</strong>
+                <span>OMIKUJI / DAILY ORACLE</span>
+              </div>
+              <div class="result-rank-block">
+                <span>今日签运</span>
+                <p class="fortune-rank" id="fortuneRank">大吉</p>
+                <i aria-hidden="true"></i>
               </div>
             </header>
 
             <section class="omikuji-stage">
-              <div class="omikuji-curtain omikuji-curtain-left" aria-hidden="true">
-                <strong>大</strong>
-                <span>吉</span>
-              </div>
-              <div class="omikuji-curtain omikuji-curtain-right" aria-hidden="true">
-                <strong>吉</strong>
-                <span>祥</span>
-              </div>
-
-              <div class="poem-section">
-                <h3>签诗</h3>
-                <p class="poem-lines" id="resultPoem"></p>
-              </div>
+              <div class="omikuji-curtain omikuji-curtain-left" aria-hidden="true"></div>
+              <div class="omikuji-curtain omikuji-curtain-right" aria-hidden="true"></div>
 
               <div class="portrait-column">
                 <div class="character-art-wrap">
                   <img id="resultArt" alt="" loading="eager" fetchpriority="high" decoding="async" />
                 </div>
                 <div class="result-copy">
-                  <p class="fortune-rank" id="fortuneRank">大吉</p>
                   <p class="result-keyword" id="resultKeyword"></p>
                   <h2 id="resultName"></h2>
                   <p class="result-jp" id="resultJp"></p>
                   <span class="result-cn" id="resultCn"></span>
                 </div>
               </div>
+
+              <div class="poem-section">
+                <h3>签诗</h3>
+                <p class="poem-lines" id="resultPoem"></p>
+              </div>
             </section>
 
             <section class="fortune-body">
               <div class="oracle-section">
-                <h3>断曰</h3>
+                <h3><span>今日神谕</span><small>ORACLE</small></h3>
                 <p id="resultOracle"></p>
               </div>
               <div class="today-action">
-                <span>今日行动</span>
+                <span>今日行动 <small>ACTION</small></span>
                 <p id="todayAction"></p>
               </div>
               <dl class="fortune-grid">
-                <div><dt>愿望</dt><dd id="resultWish"></dd></div>
-                <div><dt>待人</dt><dd id="resultPeople"></dd></div>
-                <div><dt>出行</dt><dd id="resultTravel"></dd></div>
-                <div><dt>学业</dt><dd id="resultStudy"></dd></div>
+                <div><dt>愿望 <small>WISH</small></dt><dd id="resultWish"></dd></div>
+                <div><dt>待人 <small>PEOPLE</small></dt><dd id="resultPeople"></dd></div>
+                <div><dt>出行 <small>TRAVEL</small></dt><dd id="resultTravel"></dd></div>
+                <div><dt>学业 <small>STUDY</small></dt><dd id="resultStudy"></dd></div>
               </dl>
             </section>
 
             <section class="result-audio" id="resultAudio">
               <div>
-                <span>今日曲目</span>
+                <span>今日曲目 / TRACK</span>
                 <strong id="resultTrackTitle"></strong>
                 <small id="resultAudioStatus">点击播放</small>
               </div>
@@ -132,7 +133,7 @@
             </section>
 
             <details class="result-details">
-              <summary>角色资料</summary>
+              <summary>角色资料 <small>PROFILE</small></summary>
               <dl>
                 <div><dt>CV</dt><dd id="resultCv"></dd></div>
                 <div><dt>属性</dt><dd id="resultTraits"></dd></div>
@@ -147,10 +148,8 @@
             </div>
           </article>
         </section>
-      </div>
-    </main>
 
-    <section class="catalog-screen" id="catalogScreen" aria-hidden="false">
+        <section class="catalog-screen" id="catalogScreen" aria-hidden="false">
       <header class="catalog-heading">
         <div>
           <p>MEMBER INDEX</p>
@@ -194,6 +193,6 @@
   <script src="vendor/gsap/gsap.min.js"></script>
   <script src="vendor/gsap/Observer.min.js"></script>
   <script src="data/characters.js?v=24"></script>
-  <script src="script_v9.js?v=26"></script>
+  <script src="script_v9.js?v=28"></script>
 </body>
 </html>
